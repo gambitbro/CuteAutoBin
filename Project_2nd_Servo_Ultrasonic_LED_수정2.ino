@@ -1,4 +1,3 @@
-// LED 점차 밝아졌다가 어두워지게 하는 코드 추가작성.
 #include <Servo.h>
 
 // Servo 모터
@@ -16,9 +15,8 @@ const int trig_led = 6;
 int cnt = 0;
 int brightness = 0; // LED의 밝기를 저장하는 변수
 
-
 void setup() {
-  
+
   // 초음파 센서 셋업
   pinMode(trig_pin, OUTPUT);
   pinMode(echo_pin, INPUT);
@@ -55,15 +53,20 @@ void loop() {
   if (distance <= 15) {
     if (cnt >= 10) {
       servo.write(140);
-      for(int t_high=0; t_high<=10; t_high++)
+      for(int t_high=0; t_high<=5; t_high++)
       {
-        analogWrite(trig_led, HIGH); // LED 밝기 설정
-        delay(t_high);
-        digitalWrite(trig_led, LOW);
-        delay(10-t_high);
+        analogWrite(trig_led, brightness); // LED 밝기 설정
+        delay(20); // 깜빡이는 속도 느리게
+        brightness += 25; // 밝기 증가
+      }
+      for(int t_low=0; t_low<=5; t_low++)
+      {
+        analogWrite(trig_led, brightness); // LED 밝기 설정
+        delay(20); // 깜빡이는 속도 느리게
+        brightness -= 25; // 밝기 감소
       }
     } else {
-      cnt = cnt + 3;
+      cnt = cnt + 5;
     }
   } else {
     if (cnt == 0) {
@@ -75,3 +78,4 @@ void loop() {
   }
   delay(100);
 }
+
