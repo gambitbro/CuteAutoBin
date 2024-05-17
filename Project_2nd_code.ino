@@ -63,7 +63,7 @@ void setup() {
   pinMode(trig_led, OUTPUT);
   digitalWrite(trig_led, LOW);
 
-  Serial.begin(115200);
+  Serial.begin(115200);    //초음파 거리 모니터링
 }
 
 //==============================================================
