@@ -5,15 +5,15 @@
 #include <LiquidCrystal_I2C.h>
 
 // Servo 모터
-const int SERVO = 10;
+const int SERVO = 3;
 Servo servo;
 
 // 초음파 센서(뚜껑 개폐)
 const int trig_pin = 11;
 const int echo_pin = 12;
 // 초음파 센서(쓰레기양 측정)
-const int trig_pin2 = 5; // 쓰레기양 측정 초음파 센서 핀 *
-const int echo_pin2 = 9; // 쓰레기양 측정 초음파 센서 핀 *
+const int trig_pin2 = 9; // 쓰레기양 측정 초음파 센서 핀 *
+const int echo_pin2 = 10; // 쓰레기양 측정 초음파 센서 핀 *
 
 // LED
 const int trig_led = 6;
@@ -128,7 +128,7 @@ void loop() {
   // Servo 모터 및 LED 제어
   if (distance <= 15) {
     if (cnt >= 10) {
-      servo.write(140);
+      servo.write(170);
       for(int t_high=0; t_high<=5; t_high++)
       {
         analogWrite(trig_led, brightness); // LED 밝기 설정
