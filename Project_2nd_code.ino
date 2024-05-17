@@ -4,6 +4,8 @@
 #include <Wire.h> 
 #include <LiquidCrystal_I2C.h>
 
+#define NOTE_SIZE 21
+
 // Servo 모터
 const int SERVO = 3;
 Servo servo;
@@ -33,8 +35,12 @@ unsigned long pre_t1 = 0;
 unsigned long pre_t2 = 0;
 
 const long interval_t1 = 1000;  //1초간격
-//
 
+// BUZZER
+const int BUZZER = 5;
+const double melody[NOTE_SIZE] = {349.2, 293.7, 293.7, 293.7, 293.7, 293.7, 349.2,
+                              293.7, 246.9, 293.7, 349.2, 293.7, 246.9, 293.7, 
+                              349.2, 293.7, 293.7, 246.9, 246.9, 246.9, 246.9};
 
 //==============================================================
 
@@ -99,6 +105,11 @@ void loop() {
       message = "80%  OOOO_";
     } else {
       message = "FULL :(";
+      for(int note = 0; note < NOTE_SIZE; ++note){
+        tone(BUZZER, melody[note]);
+        delay(500);
+        noTone(BUZZER);
+      }
     }
     // LCD에 메시지 출력 *
     lcd.clear();
