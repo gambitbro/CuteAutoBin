@@ -1,5 +1,5 @@
 # CuteAutoBin
- - ppt주소: https://docs.google.com/presentation/d/14pVfsvKqfuSIzGHA4NC_iTpnTMmAQ33j/edit#slide=id.p6
+ - ppt주소: [https://docs.google.com/presentation/d/14pVfsvKqfuSIzGHA4NC_iTpnTMmAQ33j/edit#slide=id.p6](https://docs.google.com/presentation/d/1j0mwmzhA8dEUEDdFXEoIPy-s1dI6GRVX0SpPBqB5-hM/edit#slide=id.p5)
 
 - We make super cute trash can!!!!
 
