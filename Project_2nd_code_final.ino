@@ -4,33 +4,33 @@
 #include <Wire.h>
 #include <LiquidCrystal_I2C.h>
 
+
+// 초음파 센서(뚜껑 개폐)
+#define trig_pin 11
+#define echo_pin 12
+// 초음파 센서(쓰레기양 측정)
+#define trig_pin2 9
+#define echo_pin2 10
+// LED
+#define trig_led 6
+//쓰레기통 높이
+#define binHeight 25
+// Buzzer음 개수
 #define NOTE_SIZE 5
 
 // Servo 모터
 const int SERVO = 3;
 Servo servo;
 
-// 초음파 센서(뚜껑 개폐)
-const int trig_pin = 11;
-const int echo_pin = 12;
-// 초음파 센서(쓰레기양 측정)
-const int trig_pin2 = 9; // 쓰레기양 측정 초음파 센서 핀 *
-const int echo_pin2 = 10; // 쓰레기양 측정 초음파 센서 핀 *
-
-// LED
-const int trig_led = 6;
-
 // 뚜껑 열리는 속도 설정
 int cnt = 0;
 // LED의 밝기를 저장하는 변수
 int brightness = 0; 
-
+// LCD 설정
 LiquidCrystal_I2C lcd(0x27,16,2);
 
-//쓰레기통 높이
-const int binHeight = 25;
 
-//millis설정
+// millis 설정
 unsigned long pre_t1 = 0;
 unsigned long pre_t2 = 0;
 
@@ -55,7 +55,7 @@ void setup() {
   lcd.begin(16, 2); // 16x2 LCD 초기화 *
   // Servo 모터 셋업
   servo.attach(SERVO);
-  servo.write(90);
+  servo.write(90);    //닫혀있는 상태로 초기화
   delay(50);
 
   // LED 셋업
@@ -76,7 +76,7 @@ void loop() {
   if(curr_t1 - pre_t1 >= interval_t1){
     pre_t1 = curr_t1;
     // 작업 시작
-    // 쓰레기양 초음파 측정 시작 *
+    // 쓰레기양 초음파 측정 시작
     digitalWrite(trig_pin2, LOW);
     delayMicroseconds(2);
     digitalWrite(trig_pin2, HIGH);
