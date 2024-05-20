@@ -90,7 +90,7 @@ void loop() {
     Serial.println(" cm");
     delay(100);
 
-    //  LCD에 표시할 메시지 결정 *
+    //  LCD에 표시할 메시지 결정
     String message;
 
     if (distance2 > binHeight * 0.9) {
@@ -111,7 +111,7 @@ void loop() {
         noTone(BUZZER);
       }
     }
-    // LCD에 메시지 출력 *
+    // LCD에 메시지 출력
     lcd.clear();
     lcd.setCursor(0, 0);
     lcd.print("Bin Status:");
@@ -152,14 +152,14 @@ void loop() {
         brightness -= 25; // 밝기 감소
       }
     } else {
-      cnt = cnt + 5;
+      cnt = cnt + 5;  // 15cm 이내 물체를 감지하면 cnt값을 5올림, 10이되면 뚜껑 오픈
     }
   } else {
     if (cnt == 0) {
       servo.write(90);
       digitalWrite(trig_led, 0); // LED 꺼짐
     } else {
-      cnt--;
+      cnt--;    // 쓰레기 버리는 시간을 위해 올라갔던 cnt값이 하나씩 감소되도록 설정
     }
   }
   delay(100);
