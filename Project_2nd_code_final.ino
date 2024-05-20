@@ -70,7 +70,7 @@ void setup() {
 void loop() {
 
   unsigned long curr_t1 = millis();
-  unsigned long curr_t2 = millis();
+  unsigned long curr_t2 = millis();  //예비
 
   // 쓰레기양 초음파 millis 1번
   if(curr_t1 - pre_t1 >= interval_t1){
