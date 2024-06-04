@@ -6,15 +6,15 @@
 
 
 // 초음파 센서(뚜껑 개폐)
-#define trig_pin 11
-#define echo_pin 12
+#define TRIG_PIN 11
+#define ECHO_PIN 12
 // 초음파 센서(쓰레기양 측정)
-#define trig_pin2 9
-#define echo_pin2 10
+#define TRIG_PIN2 9
+#define ECHO_PIN2 10
 // LED
-#define trig_led 6
+#define TRIG_LED 6
 //쓰레기통 높이
-#define binHeight 25
+#define BINHEIGHT 25
 // Buzzer음 개수
 #define NOTE_SIZE 5
 
